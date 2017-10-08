@@ -2,6 +2,7 @@ var gulp = require('gulp');
 var htmlmin = require('gulp-htmlmin');
 var uglify = require('gulp-uglify');
 var pump = require('pump');
+var concat = require('gulp-concat');
  
 gulp.task('compress', function (cb) {
   pump([
@@ -11,6 +12,12 @@ gulp.task('compress', function (cb) {
     ],
     cb
   );
+});
+
+gulp.task('concat-css',function(){
+  return gulp.src('./src/css/*.css')
+    .pipe(concat('main.js'))
+    .pipe(gulp.dest('./dist/'));
 });
 
  
@@ -26,3 +33,4 @@ gulp.task('copy', function(){
 });
 
 gulp.task('build',['minify','compress','copy']);
+
