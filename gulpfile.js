@@ -3,10 +3,13 @@ var htmlmin = require('gulp-htmlmin');
 var uglify = require('gulp-uglify');
 var pump = require('pump');
 var concat = require('gulp-concat');
+var nano = require('gulp-cssnano');
+var uncss = require('gulp-uncss');
+
  
 gulp.task('compress', function (cb) {
   pump([
-        gulp.src('src/*.js'),
+        gulp.src('src/js/*.js'),
         uglify(),
         gulp.dest('dist')
     ],
@@ -14,9 +17,13 @@ gulp.task('compress', function (cb) {
   );
 });
 
-gulp.task('concat-css',function(){
+gulp.task('bundle-css',function(){
   return gulp.src('./src/css/*.css')
-    .pipe(concat('main.js'))
+    .pipe(concat('main.css'))
+    .pipe(uncss({
+            html: ['./src/*.html']
+        }))
+    .pipe(nano())
     .pipe(gulp.dest('./dist/'));
 });
 
@@ -32,5 +39,5 @@ gulp.task('copy', function(){
     .pipe(gulp.dest('dist'));
 });
 
-gulp.task('build',['minify','compress','copy']);
+gulp.task('build',['minify','compress','copy','bundle-css']);
 
