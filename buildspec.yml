@@ -1,0 +1,14 @@
+version: 0.2
+           
+phases:
+  install:
+    commands:
+      - npm install
+      - npm install -g gulp-cli
+  build:
+    commands:
+      - gulp build
+  post_build:
+    commands:
+      - aws s3 cp ./dist/assets/*.* s3://slug-production-assets
+      - aws s3 cp ./dist/templates/*.* s3://slug-production-templates
