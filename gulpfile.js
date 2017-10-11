@@ -25,10 +25,12 @@ gulp.task('compress', function (cb) {
 gulp.task('bundle-css',function(){
   return gulp.src('./src/css/*.css')
     .pipe(concat('slug.css'))
+/*
     .pipe(uncss({
             html: ['./src/*.html']
         }))
     .pipe(nano())
+*/
     .pipe(gulp.dest('./dist/assets/'));
 });
 
