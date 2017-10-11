@@ -30,5 +30,8 @@
     "gulp-uncss": "^1.0.6",
     "pump": "^1.0.2",
     "tachyons": "^4.8.1"
+  },
+  "dependencies": {
+    "handlebars": "^4.0.10"
   }
 }
