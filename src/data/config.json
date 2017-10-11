@@ -1,0 +1,9 @@
+{
+	"cssfile": "slug.css",
+	"jsfile": "slug.js",
+	"meetup": {
+		"date": "11 November 2017",
+		"time": "18:30 - 21:00",
+		"venue": "Financial Times"
+	}
+};
