@@ -10,5 +10,5 @@ phases:
       - gulp build
   post_build:
     commands:
-      - aws s3 cp ./dist/assets/*.* s3://slug-production-assets
-      - aws s3 cp ./dist/templates/*.* s3://slug-production-templates
+      - aws s3 cp ./dist/assets/ s3://slug-production-assets/ --recursive
+      - aws s3 cp ./dist/templates/ s3://slug-production-templates/ --recursive
